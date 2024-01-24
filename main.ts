@@ -197,25 +197,28 @@ function _6wire () {
 function _3wire () {
     RedCount = 0
     BlueCount = 0
+    WhiteCount = 0
     for (let value of WireList) {
         if (value == 0) {
             RedCount += 1
         } else if (value == 1) {
+            WhiteCount += 1
+        } else if (value == 2) {
             BlueCount += 1
         }
-    }
-    if (RedCount == 0) {
-        game.splash("Cut the 2nd wire")
-    } else if (WireList[2] == 1) {
-        game.splash("Cut the last wire")
-    } else if (BlueCount == 1) {
-        if (WireList[2] == 2) {
-            game.splash("Cut the 3rd wire ")
-        } else if (WireList[1] == 2) {
+        if (RedCount == 0) {
             game.splash("Cut the 2nd wire")
+        } else if (WireList[2] == 1) {
+            game.splash("Cut the last wire")
+        } else if (BlueCount == 1) {
+            if (WireList[2] == 2) {
+                game.splash("Cut the last wire ")
+            } else {
+                game.splash("Cut the 2nd wire")
+            }
+        } else {
+            game.splash("Cut the last wire")
         }
-    } else {
-        game.splash("Cut the last wire")
     }
 }
 let WhiteCount = 0
